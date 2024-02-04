@@ -1,30 +1,33 @@
-from Author import *
-from Magazine import *
+from Author import Author
+from Magazine import Magazine
 
-
-class Article(Magazine, Author):
-    pass
+class Article:
     all_articles = []
-    # # Article __init__(author, magazine, title)
-    # # An article is initialized with an author as an Author object, a magazine as a Magazine object, and title as a string.
-    # # An article cannot change its author, magazine, or title after it is has been initialized.
-    # # Article title()
-    # # Returns the title for that given article
-    # # Article all()
-    # # Returns an list of all Article instances
-    def __init__(self, author, magazine, title=""):
-        self.author = author.name
-        self.magazine = magazine.name
-        self.title = title
-        Article.all_articles.append([author, magazine, title])
+
+    def __init__(self, author, magazine, title):
+        self._author = Author
+        self._magazine = Magazine
+        self._title = title
+        Article.all_articles.append({
+            "author": author,
+            "magazine": magazine,
+            "title": title
+        })
+
+    def author(self):
+        return self._author
+
+    def magazine(self):
+        return self._magazine
+
+    def title(self):
+        return self._title
+
+    @classmethod
+    def articles(cls, author):
+        return [article for article in cls.all_articles if article.get("author") == author]
 
     @classmethod
     def all(cls):
         return cls.all_articles
-
-    # def show_all(cls):
-    #     print([Article.all])
-
-print(Article.all)
-
 
