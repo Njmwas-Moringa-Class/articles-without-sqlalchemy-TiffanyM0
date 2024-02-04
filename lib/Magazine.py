@@ -1,49 +1,56 @@
 class Magazine:
-    pass
-
     all_magazines = []
 
     def __init__(self, name, category):
         self._name = name
         self._category = category
-        Magazine.all_magazines.append({name : category})
+        self._articles = []
+        Magazine.all_magazines.append(self)
 
-    def getName(self):
-        return self._name
-    def setName(self, name):
-        self._name = name 
-    def getCategory(self):
-        return self._category
-    def setCategory(self, category):
-        self._category = category
-    name = property(getName, setName)
-    category = property(getCategory, setCategory)
-
+    @property
     def name(self):
         return self._name
-    
+
+    @property
     def category(self):
         return self._category
 
     @classmethod
     def all(cls):
         return cls.all_magazines
-       
     
-bridal = Magazine("Bridal", "wedding")
-minis = Magazine("minis", "drinks")
-lokko = Magazine("lokko", "fun")
+    def contributors(self):
+        return list(set(article.author() for article in self._articles))
+
+    def add_article(self, author, title):
+        from Article import Article
+        new_article = Article(author, self, title)
+        self._articles.append(new_article)
+        return new_article
+    
+    @classmethod
+    def article_titles(cls):
+        return [article.title() for magazine in cls._all_magazines for article in magazine._articles]
+
+    @classmethod
+    def contributing_authors(cls):
+        return [author for magazine in cls._all_magazines for author in magazine.contributors() if len(author.articles()) > 2]
+    
+
+# bridal = Magazine("Bridal", "wedding")
+# minis = Magazine("minis", "drinks")
+# lokko = Magazine("lokko", "fun")
 
 # print(bridal.name())
 # print(bridal.category())
 # print(bridal.all_magazines)
-m1 = Magazine("M1", "life")
-m2 = Magazine("M2", "fan")
-m3 = Magazine("M3", "man")
-m4 = Magazine("M4", "can")
-m5 = Magazine("M5", "ran")
-m6 = Magazine("M6", "pan")
-m7 = Magazine("M7", "son")
+# m1 = Magazine("M1", "life")
+# m2 = Magazine("M2", "fan")
+# m3 = Magazine("M3", "man")
+# m4 = Magazine("M4", "can")
+# m5 = Magazine("M5", "ran")
+# m6 = Magazine("M6", "pan")
+# m7 = Magazine("M7", "son")
 
 # print(Magazine.all())
 

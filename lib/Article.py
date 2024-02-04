@@ -5,29 +5,27 @@ class Article:
     all_articles = []
 
     def __init__(self, author, magazine, title):
-        self._author = Author
-        self._magazine = Magazine
+        self._author = author
+        self._magazine = magazine
         self._title = title
-        Article.all_articles.append({
-            "author": author,
-            "magazine": magazine,
-            "title": title
-        })
+        Article.all_articles.append(self)
 
+    @property
     def author(self):
         return self._author
 
+    @property
     def magazine(self):
         return self._magazine
 
+    @property
     def title(self):
         return self._title
-
-    @classmethod
-    def articles(cls, author):
-        return [article for article in cls.all_articles if article.get("author") == author]
 
     @classmethod
     def all(cls):
         return cls.all_articles
 
+    @classmethod
+    def articles(cls, author):
+        return [article for article in cls.all_articles if article.author == author]
