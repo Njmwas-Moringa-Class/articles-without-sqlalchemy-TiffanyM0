@@ -1,15 +1,24 @@
+from typing import Any
+
+
 class Author:
-    pass
-    # Author __init__(name)
-    # An author is initialized with a name, as a string.
-    # A name cannot be changed after it is initialized.
-    # Author name()
-    # Returns the name of the autho
     def __init__(self, name):
         if (type(name) is (str)):
-            self.name = name
+            self._name = name
         else:
-            print("Name must be String!")
+             print("Name must be String!")
 
-# d = Author("betsy")
-# print(d.name)
+    @property
+    def name(self):
+        return self._name
+
+a1 = Author("n1")
+a2 = Author("n2")
+a3 = Author("n3")
+a4 = Author("n4")
+a5 = Author("n5")
+a6 = Author("n6")
+a7 = Author("n7")
+
+###!!!!----> check name() delverable <----!!!!###
+# print(a7.name)
