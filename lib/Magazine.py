@@ -19,22 +19,22 @@ class Magazine:
     def all(cls):
         return cls.all_magazines
     
-    def contributors(self):
-        return list(set(article.author() for article in self._articles))
-
     def add_article(self, author, title):
         from Article import Article
         new_article = Article(author, self, title)
         self._articles.append(new_article)
         return new_article
     
+    def contributors(self):
+        return list(set(article.author() for article in self._articles))
+    
     @classmethod
     def article_titles(cls):
-        return [article.title() for magazine in cls._all_magazines for article in magazine._articles]
+        return [article.title() for magazine in cls.all_magazines for article in magazine._articles]
 
     @classmethod
     def contributing_authors(cls):
-        return [author for magazine in cls._all_magazines for author in magazine.contributors() if len(author.articles()) > 2]
+        return [author for magazine in cls.all_magazines for author in magazine.contributors() if len(author.articles()) > 2]
     
 def fr(self):
 

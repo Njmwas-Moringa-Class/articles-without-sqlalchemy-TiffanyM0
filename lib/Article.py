@@ -1,8 +1,3 @@
-from Author import Author
-from Magazine import Magazine
-from Author import Author
-from Magazine import Magazine
-
 
 class Article:
     pass
@@ -16,7 +11,9 @@ class Article:
 
     @property
     def author(self):
-        return self._author
+        from Author import Author
+        add_author = Author(f'{self.author}')
+        return add_author
 
     @property
     def magazine(self):
