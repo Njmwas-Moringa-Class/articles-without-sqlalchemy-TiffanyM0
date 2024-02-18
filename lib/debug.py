@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import ipdb;
-from model import *
+from Author import Author
+from Magazine import Magazine
+from Article import Article
 
 if __name__ == '__main__':
 #  WRITE YOUR TEST CODE HERE ###
