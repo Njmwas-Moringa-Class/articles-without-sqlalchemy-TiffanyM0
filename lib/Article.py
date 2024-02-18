@@ -11,9 +11,7 @@ class Article:
 
     @property
     def author(self):
-        from Author import Author
-        add_author = Author(f'{self.author}')
-        return add_author
+        return self._author
 
     @property
     def magazine(self):

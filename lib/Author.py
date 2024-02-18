@@ -28,11 +28,12 @@ class Author:
         return self._magazines
 
     def articles(self):
-        return self._articles
+        return [article for article in self._articles]
 
     @classmethod
     def all(cls):
         return cls.all_authors
     
-    def add_article(self, magazine, title):
+    def topic_areas(self, magazine):
         pass
+        topics = [magazine for magazine.category in self._magazines]
