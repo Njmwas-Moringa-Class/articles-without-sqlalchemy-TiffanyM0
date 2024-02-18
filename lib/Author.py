@@ -21,7 +21,7 @@ class Author:
     
     def magazine_contributor(self, magazine):
         from Magazine import Magazine
-        _magazine = Magazine(magazine)
+        _magazine = Magazine(magazine.name, magazine.category)
         self._magazines.append(_magazine)
     
     def magazines(self):
