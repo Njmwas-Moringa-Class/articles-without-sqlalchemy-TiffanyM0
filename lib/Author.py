@@ -1,24 +1,29 @@
-from typing import Any
-
+from Article import Article 
 
 class Author:
+    _all_authors = []
+
     def __init__(self, name):
-        if (type(name) is (str)):
+        if isinstance(name, str):
             self._name = name
+            self._articles = []
+            Author._all_authors.append(self)
         else:
-             print("Name must be String!")
+            print("Name must be a string!")
 
     @property
     def name(self):
         return self._name
 
-a1 = Author("n1")
-a2 = Author("n2")
-a3 = Author("n3")
-a4 = Author("n4")
-a5 = Author("n5")
-a6 = Author("n6")
-a7 = Author("n7")
+    def contribute_article(self, magazine, title):
+        from Article import Article 
+        _article = Article(self, magazine, title)
+        self._articles.append(_article)
 
-###!!!!----> check name() delverable <----!!!!###
-# print(a7.name)
+    def articles(self):
+        return self._articles
+
+
+    @classmethod
+    def all(cls):
+        return cls._all_authors
