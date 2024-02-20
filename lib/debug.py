@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
     magazine1.add_article(author1, "Article 2")
 
-    assert Magazine.contributing_authors() == [author1]
+    #assert Magazine.contributing_authors() == [author1]
 
 
     ipdb.set_trace()

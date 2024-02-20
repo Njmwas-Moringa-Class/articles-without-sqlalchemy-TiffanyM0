@@ -26,7 +26,7 @@ class Magazine:
         return new_article
     
     def contributors(self):
-        return list(set(article.author() for article in self._articles))
+        return list(set(article._author for article in self._articles))
     
     @classmethod
     def article_titles(cls):

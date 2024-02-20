@@ -10,7 +10,7 @@ class Article:
         Article.all_articles.append(self)
 
     @property
-    def author(self):
+    def _author(self):
         return self._author
 
     @property
