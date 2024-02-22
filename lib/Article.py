@@ -10,21 +10,18 @@ class Article:
         Article.all_articles.append(self)
 
     @property
-    def _author(self):
-        return self._author
-
-    @property
     def magazine(self):
         return self._magazine
 
     @property
+    def author (self):
+        return self._author
+    
+    
+    @property
     def title(self):
         return self._title
 
-    @classmethod
-    def all(cls):
-        return cls.all_articles
+    def all():
+        return Article.all_articles
 
-    @classmethod
-    def articles(cls, author):
-        return [article for article in cls.all_articles if article.author == author]

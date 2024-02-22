@@ -1,3 +1,5 @@
+from Article import Article
+
 class Author:
     all_authors = []
 
@@ -13,27 +15,20 @@ class Author:
     @property
     def name(self):
         return self._name
-
-    def add_article(self, magazine, title):
-        from Article import Article 
-        _article = Article(self, magazine, title)
-        self._articles.append(_article)
     
-    def magazine_contributor(self, magazine):
-        from Magazine import Magazine
-        _magazine = Magazine(magazine.name, magazine.category)
-        self._magazines.append(_magazine)
+    def add_article(self, magazine, title):
+        new_article = Article(self, magazine, title)
+        self._articles.append(new_article)
+        self._magazines.append(magazine)
+        magazine.add_article(new_article)
+        return new_article
+
+    def articles(self):
+        return self._articles
     
     def magazines(self):
         return self._magazines
-
-    def articles(self):
-        return [article for article in self._articles]
-
-    @classmethod
-    def all(cls):
-        return cls.all_authors
     
-    def topic_areas(self, magazine):
-        pass
-        topics = [magazine for magazine.category in self._magazines]
+    def topic_areas(self):
+        return [magazine.category for magazine in self._magazines]
+    
